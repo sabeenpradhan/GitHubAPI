@@ -15,6 +15,7 @@ import com.project.sabeen.textme.model.Contributor;
 import com.project.sabeen.textme.model.GitRepoItems;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormatSymbols;
 import java.util.List;
 
 /**
@@ -90,4 +91,15 @@ public class ContributerListAdapter extends RecyclerView.Adapter<ContributerList
     public int getItemCount() {
         return contributorList.size();
     }
+
+    private String getMonthForInt(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 11 ) {
+            month = months[num];
+        }
+        return month;
+    }
+
 }
