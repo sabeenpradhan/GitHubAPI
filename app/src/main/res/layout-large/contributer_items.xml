@@ -36,7 +36,7 @@
         android:layout_toRightOf="@+id/contrib_pic"
         android:layout_weight="1"
         android:text="name"
-        android:textSize="17sp"
+        android:textSize="19sp"
         android:textStyle="bold" />
 
     <TextView
@@ -49,7 +49,8 @@
         android:layout_marginTop="3dp"
         android:layout_weight="1"
         android:text="login"
-        android:textColor="#808080" />
+        android:textColor="#808080"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/contrib_url"
@@ -60,5 +61,6 @@
         android:layout_below="@+id/contrib_login"
         android:layout_marginTop="3dp"
         android:text="link"
-        android:textColor="#4078c0" />
+        android:textColor="#4078c0"
+        android:textSize="16sp" />
 </RelativeLayout>

@@ -8,32 +8,16 @@
     android:orientation="vertical"
     tools:context="com.project.sabeen.textme.StarredRepoActivity">
 
-
-<android.support.v7.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
-    android:elevation="4dp"
-    android:minHeight="?attr/actionBarSize">
-
-</android.support.v7.widget.Toolbar>
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/starSwipe"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/repo"
-        android:focusable="true"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground"
+    <FrameLayout
+        android:id="@+id/repo_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
-
-    </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
-
+        android:layout_height="match_parent"></FrameLayout>
 </LinearLayout>

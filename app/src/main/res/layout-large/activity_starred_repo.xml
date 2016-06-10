@@ -2,40 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_contributer"
+    android:id="@+id/activity_starred_repo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.project.sabeen.textme.StarredRepoActivity">
 
-
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbarContrib"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:background="?attr/colorPrimary"
+        android:elevation="4dp"
         android:minHeight="?attr/actionBarSize">
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/contribSwipe"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/contributerRV"
-            android:background="?android:attr/selectableItemBackground"
+        <FrameLayout
+            android:id="@+id/repo_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical">
+            android:layout_weight="0.4" />
 
-        </android.support.v7.widget.RecyclerView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="sav" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        <FrameLayout
+            android:id="@+id/contrib_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" />
+    </LinearLayout>
 
 </LinearLayout>

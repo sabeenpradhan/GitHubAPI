@@ -1,20 +1,23 @@
-package com.project.sabeen.textme;
+package com.project.sabeen.textme.fragments;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.ProgressBar;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.project.sabeen.textme.R;
 import com.project.sabeen.textme.adapter.ContributerListAdapter;
 import com.project.sabeen.textme.model.Contributor;
 import com.project.sabeen.textme.model.ContributorUrlList;
@@ -31,13 +34,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-/**
- * Activity for loading Contributors of Repository
- * Uses ContributorListAdapter for displaying Contributors List in Recycle View
- * Created by sabeen on 6/3/16.
- */
-public class ContributorAcitivity extends AppCompatActivity {
 
+public class ContributorFragment extends Fragment {
     private String globalSearchUrl;
     private List<String> contributorUrl;
     private List<Contributor> contributors;
@@ -50,47 +48,48 @@ public class ContributorAcitivity extends AppCompatActivity {
     private static Integer checkCount = 0;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contributer);
-
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.contribSwipe);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadContributorsUrlFromNW();
-            }
-        });
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarContrib);
-        toolbar.setTitle("TextMe GitHub");
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-
-//      Getting Stored Client Id and Client Secret stored in Application Class
-        SharedPreferences prefs = getSharedPreferences("AUTH", MODE_PRIVATE);
-        clientId = prefs.getString("client_id", null);
-        clientSecret = prefs.getString("client_secret", null);
-
-//      For Using Realm Database
-        realm = Realm.getInstance(getApplicationContext());
-
-        contributorUrl = new ArrayList<>();
-        contributors = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.contributerRV);
-        contributerListAdapter = new ContributerListAdapter(contributors);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(contributerListAdapter);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_contributor, container, false);
 
 //      Getting contributor_url from selected Repository sent from RepoListAdapter
-        Intent i = getIntent();
-        globalSearchUrl = i.getStringExtra("url");
-        loadContributorUrlFromDB();
-        loadContributorsUrlFromNW();
+//      bundle may be null when showing in tablet as this is called without calling RepoListAdapter
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            globalSearchUrl = bundle.getString("url");
+
+            swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.contribSwipe);
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    loadContributorsUrlFromNW();
+                }
+            });
+
+//      Getting Stored Client Id and Client Secret stored in Application Class
+            SharedPreferences prefs = getActivity().getSharedPreferences("AUTH", getActivity().MODE_PRIVATE);
+            clientId = prefs.getString("client_id", null);
+            clientSecret = prefs.getString("client_secret", null);
+
+//      For Using Realm Database
+            realm = Realm.getInstance(getActivity().getApplicationContext());
+
+            contributorUrl = new ArrayList<>();
+            contributors = new ArrayList<>();
+            recyclerView = (RecyclerView) view.findViewById(R.id.contributerRV);
+            contributerListAdapter = new ContributerListAdapter(contributors);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+            recyclerView.setLayoutManager(mLayoutManager);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(contributerListAdapter);
+
+            loadContributorUrlFromDB();
+            loadContributorsUrlFromNW();
+        }
+
+
+        return view;
     }
 
     /**
@@ -98,7 +97,7 @@ public class ContributorAcitivity extends AppCompatActivity {
      */
     private void loadContributorsUrlFromNW() {
         Call<List<ContributorUrlList>> repos = listContributorsUrl(globalSearchUrl);
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(getActivity());
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
@@ -191,9 +190,10 @@ public class ContributorAcitivity extends AppCompatActivity {
     }
 
     /**
-     *List contributor_url by making Retrofit API call
-     *@return call for making asynchronous Http request
-     *@param url the string
+     * List contributor_url by making Retrofit API call
+     *
+     * @param url the string
+     * @return call for making asynchronous Http request
      */
     private Call<List<ContributorUrlList>> listContributorsUrl(String url) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -206,9 +206,10 @@ public class ContributorAcitivity extends AppCompatActivity {
     }
 
     /**
-     *List Contributor Details by making Retrofit API call
-     *@return call for making asynchronous Http request
-     *@param url the string
+     * List Contributor Details by making Retrofit API call
+     *
+     * @param url the string
+     * @return call for making asynchronous Http request
      */
     private Call<Contributor> listContributor(String url) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -221,7 +222,7 @@ public class ContributorAcitivity extends AppCompatActivity {
     }
 
     /**
-     *Load contributor_url from Realm Database based on globalSearchUrl
+     * Load contributor_url from Realm Database based on globalSearchUrl
      */
     private void loadContributorUrlFromDB() {
         RealmResults<ContributorUrlList> results =
@@ -235,7 +236,7 @@ public class ContributorAcitivity extends AppCompatActivity {
     }
 
     /**
-     *Load contributor details from Realm Database based on globalSearchUrl
+     * Load contributor details from Realm Database based on globalSearchUrl
      */
     private void loadContributorDetailsFromDB() {
         RealmResults<Contributor> results =
@@ -247,5 +248,6 @@ public class ContributorAcitivity extends AppCompatActivity {
         contributerListAdapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);
     }
+
 
 }
