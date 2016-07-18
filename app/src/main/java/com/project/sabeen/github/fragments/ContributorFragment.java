@@ -1,9 +1,6 @@
-package com.project.sabeen.textme.fragments;
+package com.project.sabeen.github.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,16 +9,15 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.project.sabeen.textme.R;
-import com.project.sabeen.textme.adapter.ContributerListAdapter;
-import com.project.sabeen.textme.model.Contributor;
-import com.project.sabeen.textme.model.ContributorUrlList;
-import com.project.sabeen.textme.service.ContributorService;
+import com.project.sabeen.github.R;
+import com.project.sabeen.github.adapter.ContributerListAdapter;
+import com.project.sabeen.github.model.Contributor;
+import com.project.sabeen.github.model.ContributorUrlList;
+import com.project.sabeen.github.service.ContributorService;
 
 import java.util.ArrayList;
 import java.util.List;

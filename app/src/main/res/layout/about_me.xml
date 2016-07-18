@@ -10,7 +10,7 @@
         android:layout_height="300dp" />
 
     <TextView
-        android:text="Text Me GitHub API"
+        android:text="GitHub API"
         android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

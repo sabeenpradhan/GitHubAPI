@@ -1,4 +1,4 @@
-package com.project.sabeen.textme.adapter;
+package com.project.sabeen.github.adapter;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.project.sabeen.textme.R;
-import com.project.sabeen.textme.fragments.ContributorFragment;
-import com.project.sabeen.textme.model.GitRepoItems;
+import com.project.sabeen.github.R;
+import com.project.sabeen.github.fragments.ContributorFragment;
+import com.project.sabeen.github.model.GitRepoItems;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;

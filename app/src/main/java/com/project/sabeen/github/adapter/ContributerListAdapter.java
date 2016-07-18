@@ -1,6 +1,5 @@
-package com.project.sabeen.textme.adapter;
+package com.project.sabeen.github.adapter;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -10,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.project.sabeen.textme.R;
-import com.project.sabeen.textme.model.Contributor;
+import com.project.sabeen.github.R;
+import com.project.sabeen.github.model.Contributor;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

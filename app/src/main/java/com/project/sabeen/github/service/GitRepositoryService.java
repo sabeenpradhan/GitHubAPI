@@ -1,8 +1,6 @@
-package com.project.sabeen.textme.service;
+package com.project.sabeen.github.service;
 
-import com.project.sabeen.textme.model.GitRepositories;
-
-import java.util.Calendar;
+import com.project.sabeen.github.model.GitRepositories;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

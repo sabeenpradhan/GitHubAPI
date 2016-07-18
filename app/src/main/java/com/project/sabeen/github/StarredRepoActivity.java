@@ -1,4 +1,4 @@
-package com.project.sabeen.textme;
+package com.project.sabeen.github;
 
 import android.app.Dialog;
 import android.app.FragmentManager;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.project.sabeen.textme.fragments.StarredRepositoryFragment;
+import com.project.sabeen.github.fragments.StarredRepositoryFragment;
 
 /**
  * Activity containing contributor and starred repository fragments
@@ -30,7 +30,7 @@ public class StarredRepoActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("TextMe GitHub");
+        toolbar.setTitle("GitHub");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 

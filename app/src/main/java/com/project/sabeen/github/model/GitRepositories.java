@@ -1,4 +1,4 @@
-package com.project.sabeen.textme.model;
+package com.project.sabeen.github.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

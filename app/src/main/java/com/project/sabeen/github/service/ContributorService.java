@@ -1,7 +1,7 @@
-package com.project.sabeen.textme.service;
+package com.project.sabeen.github.service;
 
-import com.project.sabeen.textme.model.Contributor;
-import com.project.sabeen.textme.model.ContributorUrlList;
+import com.project.sabeen.github.model.Contributor;
+import com.project.sabeen.github.model.ContributorUrlList;
 
 import java.util.List;
 

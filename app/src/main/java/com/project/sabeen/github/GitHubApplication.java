@@ -1,17 +1,13 @@
-package com.project.sabeen.textme;
+package com.project.sabeen.github;
 
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 
 /**
  * Application Class for saving Client Id and Client Secret of Git Hub App
  * Created by sabeen on 6/3/16.
  */
-public class TextMeApplication extends Application {
+public class GitHubApplication extends Application {
 
     @Override
     public void onCreate() {

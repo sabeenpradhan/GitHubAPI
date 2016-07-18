@@ -1,4 +1,4 @@
-package com.project.sabeen.textme.fragments;
+package com.project.sabeen.github.fragments;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -12,11 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.project.sabeen.textme.R;
-import com.project.sabeen.textme.adapter.RepoListAdapter;
-import com.project.sabeen.textme.model.GitRepoItems;
-import com.project.sabeen.textme.model.GitRepositories;
-import com.project.sabeen.textme.service.GitRepositoryService;
+import com.project.sabeen.github.R;
+import com.project.sabeen.github.adapter.RepoListAdapter;
+import com.project.sabeen.github.model.GitRepoItems;
+import com.project.sabeen.github.model.GitRepositories;
+import com.project.sabeen.github.service.GitRepositoryService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
